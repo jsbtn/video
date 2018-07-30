@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+<style>
+    *{margin:0;padding: 0}
+    html,body,video{width: 100%;height: 100%; position: relative;overflow: hidden;}
+    video{ object-fit: cover;}
+    div,#endBtn{ position: absolute; width: 100px;height: 100px; left: 50%;top: 50%; margin-left: -50px;margin-top: -50px; background: red;z-index: 100;color: #fff;text-align: center;font-size: 14px; line-height: 100px;border:none;
+        transition: all 1s ease;-webkit-transition: all 1s ease;
+      }
+    div.move{
+        transform: translate3d(0,-688px,0);
+        -webkit-transform: translate3d(0,-688px,0);
+    }
+    #endBtn{
+    transition: all 1s ease;-webkit-transition: all 1s ease;
+    transform: translate3d(0,688px,0);
+        -webkit-transform: translate3d(0,688px,0);
+    }
+    #endBtn.move{
+        transform: translate3d(0,0px,0);
+        -webkit-transform: translate3d(0,0,0);
+    }
+</style>
+<body>
+    <div id="div">点击播放</div>
+    <video id="video" src="http://itakeo.com/down/video/mp4.mp4" poster="poster.jpg" muted x-webkit-airplay="true" playsinline  webkit-playsinline="true"  x5-video-player-type="h5"  ></video>
+    <button id="endBtn">再次播放</button>
+</body>
+<script>
+    div.ontouchend = div.onclick = function(){
+        this.classList.add('move')
+        video.play() 
+    }
+    endBtn.ontouchend = endBtn.onclick = function(){
+        this.classList.remove('move')
+        video.play()
+    }
+    video.addEventListener('ended',function(){
+       alert("结束播放")
+    })
+</script>
+</html>
